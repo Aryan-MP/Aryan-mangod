@@ -11,13 +11,19 @@ interface ProjectProps {
   demoLink: string;
   index: number;
 }
-
 const ProjectCard = ({ title, description, technologies, image, githubLink, demoLink, index }: ProjectProps) => {
   return (
     <div 
-      className="bg-dark-charcoal rounded-lg overflow-hidden neon-border card-hover opacity-0 animate-fadeIn"
+      className="relative bg-dark-charcoal rounded-lg overflow-hidden neon-border card-hover opacity-0 animate-fadeIn"
       style={{ animationDelay: `${0.1 + index * 0.1}s` }}
     >
+      {/* Ongoing Badge for the First Project */}
+      {index === 0 && (
+        <span className="absolute top-3 right-3 bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full animate-pulse z-10">
+          🟢 Ongoing
+        </span>
+      )}
+
       <div className="relative h-48 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-neon-purple/10"></div>
         <div 
@@ -43,20 +49,13 @@ const ProjectCard = ({ title, description, technologies, image, githubLink, demo
           ))}
         </div>
         <div className="flex space-x-4">
-          <a 
-            href={githubLink} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="text-gray-400 hover:text-neon-purple transition-colors"
-            aria-label={`View ${title} source code on GitHub`}
-          >
-            <Github size={20} />
-          </a>
         </div>
       </div>
     </div>
   );
 };
+
+
 
 const Projects = () => {
   const projects = [

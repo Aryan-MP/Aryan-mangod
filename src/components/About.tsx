@@ -32,7 +32,7 @@ const About = () => {
                 Get in Touch
               </a>
               <a 
-                href="#" 
+                href="https://drive.google.com/file/d/1HgJCt1VxWiqF43d8-FMhL-KAeO-_BGdC/view?usp=sharing" 
                 className="btn btn-outline flex items-center space-x-2"
                 target="_blank"
                 rel="noopener noreferrer"

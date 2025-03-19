@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Send, Mail, MapPin, Phone } from "lucide-react";
 
@@ -18,27 +17,44 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      console.log("Form submitted:", formData);
+    setSubmitError("");
+    setSubmitSuccess(false);
+
+    try {
+      const response = await fetch('http://localhost:3001/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
+
       setSubmitSuccess(true);
-      setIsSubmitting(false);
       setFormData({
         name: "",
         email: "",
         subject: "",
         message: ""
       });
-      
-      // Reset success message after 5 seconds
+
       setTimeout(() => {
         setSubmitSuccess(false);
       }, 5000);
-    }, 1500);
+    } catch (error) {
+      setSubmitError(error.message || "Failed to send message. Please try again later.");
+      console.error('Contact form error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -79,7 +95,7 @@ const Contact = () => {
                 <div>
                   <h4 className="text-white font-medium mb-1">Location</h4>
                   <p className="text-gray-300">
-                    San Francisco, California
+                    Bengaluru, Karnataka
                   </p>
                 </div>
               </div>
@@ -91,7 +107,7 @@ const Contact = () => {
                 <div>
                   <h4 className="text-white font-medium mb-1">Phone</h4>
                   <a href="tel:+14155551234" className="text-gray-300 hover:text-neon-purple transition-colors">
-                    +1 (415) 555-1234
+                    +91 8618098258
                   </a>
                 </div>
               </div>
