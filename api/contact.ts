@@ -1,4 +1,4 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
+import { NextApiRequest, NextApiResponse } from '@vercel/node';
 import nodemailer from 'nodemailer';
 
 const transporter = nodemailer.createTransport({
@@ -10,8 +10,8 @@ const transporter = nodemailer.createTransport({
 });
 
 export default async function handler(
-  req: VercelRequest,
-  res: VercelResponse
+  req: NextApiRequest,
+  res: NextApiResponse
 ) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
