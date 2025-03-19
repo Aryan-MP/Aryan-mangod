@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "server": "node --loader tsx src/server.ts",
-    "server:dev": "tsx watch src/server.ts"
+    "server:dev": "tsx watch src/server.ts",
+    "vercel-build": "vite build"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
