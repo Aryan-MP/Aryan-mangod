@@ -29,15 +29,20 @@ const Contact = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message
+        })
       });
 
-      const data = await response.json();
-
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to send message');
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to send message');
       }
 
+      const data = await response.json();
       setSubmitSuccess(true);
       setFormData({
         name: "",
@@ -50,8 +55,8 @@ const Contact = () => {
         setSubmitSuccess(false);
       }, 5000);
     } catch (error) {
-      setSubmitError(error.message || "Failed to send message. Please try again later.");
       console.error('Contact form error:', error);
+      setSubmitError(error.message || "Failed to send message. Please try again later.");
     } finally {
       setIsSubmitting(false);
     }
