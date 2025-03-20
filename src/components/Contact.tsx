@@ -29,32 +29,36 @@ const Contact = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message
-        })
+        body: JSON.stringify(formData)
       });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to send message');
+      const contentType = response.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        throw new Error("Server returned non-JSON response");
       }
 
       const data = await response.json();
-      setSubmitSuccess(true);
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: ""
-      });
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
 
-      setTimeout(() => {
-        setSubmitSuccess(false);
-      }, 5000);
-    } catch (error) {
+      if (data.success) {
+        setSubmitSuccess(true);
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: ""
+        });
+
+        setTimeout(() => {
+          setSubmitSuccess(false);
+        }, 5000);
+      } else {
+        throw new Error(data.error || 'Failed to send message');
+      }
+    } catch (error: any) {
       console.error('Contact form error:', error);
       setSubmitError(error.message || "Failed to send message. Please try again later.");
     } finally {
