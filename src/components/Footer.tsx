@@ -56,9 +56,6 @@ const Footer = () => {
             &copy; {new Date().getFullYear()} Aryan. All rights reserved.
           </p>
           
-          <p className="text-gray-500 text-xs flex items-center">
-            Made with <Heart size={12} className="mx-1 text-neon-purple" /> using React & Next.js
-          </p>
         </div>
       </div>
     </footer>
