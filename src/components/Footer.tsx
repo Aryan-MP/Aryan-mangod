@@ -24,7 +24,7 @@ const Footer = () => {
           
           <div className="flex items-center space-x-6 mb-6">
             <a
-              href="https://github.com"
+              href="https://github.com/Aryan-MP"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-neon-purple transition-colors duration-300"
@@ -33,7 +33,7 @@ const Footer = () => {
               <Github size={20} />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://linkedin.com/in/aryan-mp"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-neon-purple transition-colors duration-300"
@@ -42,7 +42,7 @@ const Footer = () => {
               <Linkedin size={20} />
             </a>
             <a
-              href="https://twitter.com"
+              href="https://x.com/aryan81727"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-neon-purple transition-colors duration-300"

@@ -59,7 +59,7 @@ const Contact = () => {
             <h4 className="text-white font-medium mb-4 text-center">Let's Connect</h4>
             <div className="flex gap-4 justify-center">
               <a
-                href="https://github.com/aryan-mangod"
+                href="https://github.com/Aryan-MP"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-neon-purple/10 p-4 rounded-full hover:bg-neon-purple/20 transition-colors"
@@ -68,7 +68,7 @@ const Contact = () => {
                 <Github className="text-neon-purple" size={24} />
               </a>
               <a
-                href="https://www.linkedin.com/in/aryan-mp/"
+                href="https://linkedin.com/in/aryan-mp"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-neon-purple/10 p-4 rounded-full hover:bg-neon-purple/20 transition-colors"
@@ -77,7 +77,7 @@ const Contact = () => {
                 <Linkedin className="text-neon-purple" size={24} />
               </a>
               <a
-                href="https://twitter.com/aryan_mp_"
+                href="https://x.com/aryan81727"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-neon-purple/10 p-4 rounded-full hover:bg-neon-purple/20 transition-colors"
